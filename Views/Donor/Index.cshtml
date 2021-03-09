@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Donor.Models.DonorInfo>
+@{
+    ViewData["Title"] = "Donor List";
+}
+
+<h1>Donor List</h1>
+
+<p>
+    <a asp-action="Create">Add Donor</a>
+</p>
+
+@*for display of donor info*@
+<table class="table table-striped" >
+    <thread>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Donation)
+            </th>
+        </tr>
+    </thread>
+    <tbody>
+        @foreach(var don in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => don.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => don.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => don.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => don.Donation, "Currency")
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@don.ID">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
